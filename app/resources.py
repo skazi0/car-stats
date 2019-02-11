@@ -79,15 +79,15 @@ class Sessions(Resource):
         return {'message': 'OK'}
 
 
-@api.route('/api/mileage')
-class Mileage(Resource):
+@api.route('/api/mileages')
+class Mileages(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('value', type=float, required=True,
                             help='mileage value')
         args = parser.parse_args()
 
-        mileage = Mileage(date=NOW, value=args['value'])
+        mileage = Mileage(date=datetime.datetime.now(), value=args['value'])
 
         db.session.add(mileage)
         db.session.commit()
