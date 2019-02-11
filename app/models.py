@@ -41,3 +41,14 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {0}>'.format(self.login)
+
+class Mileage(db.Model):
+    __tablename__ = "mileage"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    date = db.Column(db.DateTime, nullable=False)
+    value = db.Column(db.Float, nullable=False)
+
+    def __init__(self, date, value):
+        self.date = date
+        self.value = value

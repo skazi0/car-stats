@@ -77,3 +77,18 @@ class Sessions(Resource):
     def delete(self):
         logout_user()
         return {'message': 'OK'}
+
+
+@api.route('/api/mileage')
+class Mileage(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('value', type=float, required=True,
+                            help='mileage value')
+        args = parser.parse_args()
+
+        mileage = Mileage(date=NOW, value=args['value'])
+
+        db.session.add(mileage)
+        db.session.commit()
+        db.session.close()
