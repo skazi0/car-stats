@@ -9,3 +9,4 @@ env.sh
 blog.md
 _old
 app.cfg
+dist/DEBIAN/control
