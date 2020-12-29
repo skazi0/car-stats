@@ -1,0 +1,9 @@
+Package: car-stats
+Version: %VERSION%
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 1024
+Maintainer: Jacek Tomasiak <jacek.tomasiak@gmail.com>
+Description: Car Mileage collection app
