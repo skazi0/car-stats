@@ -13,5 +13,6 @@ dist/DEBIAN/control
 dist/DEBIAN/changelog
 dist/DEBIAN/files
 dist/opt
+dist/etc
 *.changes
 *.deb
