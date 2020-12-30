@@ -10,3 +10,8 @@ blog.md
 _old
 app.cfg
 dist/DEBIAN/control
+dist/DEBIAN/changelog
+dist/DEBIAN/files
+dist/opt
+*.changes
+*.deb

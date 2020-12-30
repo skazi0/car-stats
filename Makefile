@@ -1,7 +1,18 @@
 GITVER := $(shell git describe HEAD | tr '-' '+')
+APPNAME := car-stats
 
 all:
+	rm -rf dist/opt
+	mkdir -p dist/opt/$(APPNAME)
+	cp -r app dist/opt/$(APPNAME)
+	cp -r migrations dist/opt/$(APPNAME)
+	cp -r manage.py dist/opt/$(APPNAME)
+	cp requirements.txt dist/opt/$(APPNAME)
+	mkdir -p dist/etc/uwsgi/apps-available
+	cp $(APPNAME).ini dist/etc/uwsgi/apps-available
 	cp dist/DEBIAN/control.templ dist/DEBIAN/control
-	sed -i 's/%VERSION%/$(GITVER)/' dist/DEBIAN/control
-	dpkg-deb --build dist
-	mv dist.deb car-stats-$(GITVER)-1_all.deb
+	sed -i 's/%VERSION%/$(GITVER)-1/' dist/DEBIAN/control
+	bin/git2debchangelog.sh > dist/DEBIAN/changelog
+	dpkg-deb --nocheck --build dist $(APPNAME)_$(GITVER)-1_all.deb
+	echo "$(APPNAME)_$(GITVER)-1_all.deb custom optional" > dist/DEBIAN/files
+	dpkg-genchanges -b -ldist/DEBIAN/changelog -cdist/DEBIAN/control -fdist/DEBIAN/files -u. -O$(APPNAME)_$(GITVER)-1_all.changes
