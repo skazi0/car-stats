@@ -14,6 +14,6 @@ all:
 	mkdir -p dist/var/log/$(APPNAME)
 	sed -i 's/%VERSION%/$(GITVER)-1/' dist/DEBIAN/control
 	bin/git2debchangelog.sh > dist/DEBIAN/changelog
-	dpkg-deb --nocheck --build dist $(APPNAME)_$(GITVER)-1_all.deb
+	dpkg-deb --root-owner-group --nocheck --build dist $(APPNAME)_$(GITVER)-1_all.deb
 	echo "$(APPNAME)_$(GITVER)-1_all.deb custom optional" > dist/DEBIAN/files
 	dpkg-genchanges -b -ldist/DEBIAN/changelog -cdist/DEBIAN/control -fdist/DEBIAN/files -u. -O$(APPNAME)_$(GITVER)-1_all.changes
