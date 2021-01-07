@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-chown www-data:www-data /opt/car-stats /var/log/car-stats
+chown www-data:www-data /opt/car-stats /var/log/car-stats /etc/uwsgi/apps-available/car-stats.ini
 chmod 0770 /opt/car-stats
 chmod 0755 /var/log/car-stats
 chmod 0640 /etc/uwsgi/apps-available/car-stats.ini
