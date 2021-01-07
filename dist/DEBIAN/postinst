@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+chown www-data:www-data /opt/car-stats /var/log/car-stats
+chmod 0770 /opt/car-stats
+chmod 0755 /var/log/car-stats
+
+exit 0
