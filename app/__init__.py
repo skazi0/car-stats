@@ -14,7 +14,7 @@ app.config.from_envvar('APP_CONFIG')
 # register before creating API to avoid overwriting
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return render_template('index.html')
 
 
 bcrypt = Bcrypt(app)
