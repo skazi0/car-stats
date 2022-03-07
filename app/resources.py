@@ -92,3 +92,5 @@ class Mileages(Resource):
         db.session.add(mileage)
         db.session.commit()
         db.session.close()
+
+        return {'message': 'value saved', 'value': args['value']}
